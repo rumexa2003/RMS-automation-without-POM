@@ -12,7 +12,7 @@ with sync_playwright() as p:
     expect(table_input).to_have_value("GC-01")
 
     page.get_by_role("button", name="Activate System").click()
-    page.get_by_role("button", name="Anish").click()
+    page.get_by_role("button", name="Bar").click()
     page.wait_for_timeout(1000)  # Add between critical actions
 
     for i in range(4):
@@ -24,21 +24,18 @@ with sync_playwright() as p:
 
     page.get_by_text("START SHIFT").click()
 
+    page.wait_for_timeout(7000)  # Add between critical actions
+
+    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
     page.wait_for_timeout(1000)  # Add between critical actions
-
-    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/kitchen")
-    page.wait_for_timeout(1000)  # Add between critical actions
-
-    # Click on order card C-4 by the food item name (more specific and reliable)
-    # page.get_by_text("Chinese Chop Suey (Indo-Chinese style) (Veg)").click()
-    page.get_by_text("Chinese Chop Suey (Indo-Chinese style) (Veg)").first.click()
-    page.wait_for_timeout(2000)  # Add between critical actions
-
-    page.get_by_role("button", name="Start Preparing").click()
-    page.wait_for_timeout(1000)
     
-    page.get_by_role("button", name="All Ready").click()
-    page.wait_for_timeout(2000)
+    reports_icon = page.locator("svg.lucide-file-chart-column-increasing")
 
+    # print(reports_icon.count())
+
+    reports_icon.click()
+    page.get_by_role("button", name="Payroll").click()
+
+    page.wait_for_timeout(7000)
 
     browser.close()

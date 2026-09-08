@@ -12,7 +12,7 @@ with sync_playwright() as p:
     expect(table_input).to_have_value("GC-01")
 
     page.get_by_role("button", name="Activate System").click()
-    page.get_by_role("button", name="Anish").click()
+    page.get_by_role("button", name="Bar").click()
     page.wait_for_timeout(1000)  # Add between critical actions
 
     for i in range(4):
@@ -24,59 +24,47 @@ with sync_playwright() as p:
 
     page.get_by_text("START SHIFT").click()
 
-    page.wait_for_timeout(2000)  # Add between critical actions
+    page.wait_for_timeout(7000)  # Add between critical actions
 
-    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/kitchen")
+    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
     page.wait_for_timeout(1000)  # Add between critical actions
-
-    # reports_icon = page.locator(
-    # "svg.lucide-file-chart-column-increasing"
-    # )
-    # menu_icon.click()
-    # page.wait_for_timeout(7000)  # Add between critical actions
-
-    # menu_icon = page.locator("svg.lucide-menu")
-
-    # print(menu_icon.count())
-
+    
     menu_icon = page.locator("svg.lucide-layout-grid")
     
 
     menu_icon.click()
-    page.wait_for_timeout(2000)
 
-    # Click on "Category" button
     page.get_by_role("button", name="Category").click()
     page.wait_for_timeout(2000)
-    
-    # Locate and fill the category name input
-    category_input = page.get_by_placeholder("e.g. Starters, Main Course")
+        
+        # Locate and fill the category name input
+    category_input = page.get_by_placeholder("e.g. Cocktails, Hookah")
     category_input.fill("Automation Category")
     page.wait_for_timeout(2000)
-
-    page.get_by_role("button", name="Create Category").click()
-    page.wait_for_timeout(2000)
-
-    page.get_by_text("New Dish").click()
+    
+    page.get_by_role("button", name="Create").click()
     page.wait_for_timeout(2000)
     
-    # Locate and fill the dish name input
-    dish_name_input = page.get_by_placeholder("e.g. Signature Burger")
-    dish_name_input.fill("Signature Burger")
+    page.get_by_text("New Drink").click()
     page.wait_for_timeout(2000)
-    
-    # Locate and fill the price input
+        
+        # Locate and fill the drink name input
+    drink_name_input = page.get_by_placeholder("e.g. Classic Mojito")
+    drink_name_input.fill("test drink")
+    page.wait_for_timeout(2000)
+        
+        # Locate and fill the price input
     price_input = page.locator("input[type='number'][placeholder='0']")
     price_input.fill("350")
     page.wait_for_timeout(2000)
-    
-    # Scroll down to see the "Save Dish" button
+        
+        # Scroll down to see the "Save Drink" button
     page.evaluate("window.scrollBy(0, 500)")  # Scroll down 500px
     page.wait_for_timeout(2000)
-    
-    # Click on "Save Dish" button
-    page.get_by_role("button", name="Save Dish").click()
+        
+        # Click on "Save Drink" button
+    page.get_by_role("button", name="Save Drink").click()
     page.wait_for_timeout(3000)
-    
+    page.wait_for_timeout(7000)
 
     browser.close()

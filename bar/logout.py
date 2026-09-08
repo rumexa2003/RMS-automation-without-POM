@@ -12,7 +12,7 @@ with sync_playwright() as p:
     expect(table_input).to_have_value("GC-01")
 
     page.get_by_role("button", name="Activate System").click()
-    page.get_by_role("button", name="Anish").click()
+    page.get_by_role("button", name="Bar").click()
     page.wait_for_timeout(1000)  # Add between critical actions
 
     for i in range(4):
@@ -24,21 +24,19 @@ with sync_playwright() as p:
 
     page.get_by_text("START SHIFT").click()
 
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(7000)  # Add between critical actions
 
-    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/kitchen")
-    page.wait_for_timeout(1000)  # Add between critical actions
-
-    # Click on order card C-4 by the food item name (more specific and reliable)
-    # page.get_by_text("Chinese Chop Suey (Indo-Chinese style) (Veg)").click()
-    page.get_by_text("Chinese Chop Suey (Indo-Chinese style) (Veg)").first.click()
-    page.wait_for_timeout(2000)  # Add between critical actions
-
-    page.get_by_role("button", name="Start Preparing").click()
-    page.wait_for_timeout(1000)
-    
-    page.get_by_role("button", name="All Ready").click()
+    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
     page.wait_for_timeout(2000)
-
+        
+    page.get_by_role("button", name="Sign Out").click()
+    page.wait_for_timeout(2000)
+        
+    page.get_by_role("button").filter(has_text="Yes").click()
+    page.wait_for_timeout(2000)
+        
+            # Assert that staff has landed on the login URL
+    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/login")
+    page.wait_for_timeout(2000)
 
     browser.close()
