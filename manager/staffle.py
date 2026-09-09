@@ -35,8 +35,8 @@ with sync_playwright() as p:
 
     date_inputs = page.locator('input[type="date"]')
 
-    date_inputs.nth(0).fill("2026-08-31")  # FROM
-    date_inputs.nth(1).fill("2026-09-02")  # TO
+    date_inputs.nth(0).fill("2026-09-20")  # FROM
+    date_inputs.nth(1).fill("2026-09-22")  # TO
     page.wait_for_timeout(2000)
 
     page.get_by_placeholder("Why do you need leave?").fill("I need leave for personal reasons")

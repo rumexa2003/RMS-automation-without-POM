@@ -27,7 +27,5 @@ with sync_playwright() as p:
     page.get_by_role("button", name="Serve Ready Items").click()
     
     page.wait_for_timeout(1000)  
-
     
-
     browser.close()

@@ -1,4 +1,4 @@
-# Waiter picks up the order and serves it to the customer.
+
 from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as p:

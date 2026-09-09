@@ -12,32 +12,13 @@ with sync_playwright() as p:
     expect(table_input).to_have_value("GC-01")
 
     page.get_by_role("button", name="Activate System").click()
-    page.get_by_role("button", name="Anish").click()
+    page.get_by_role("button", name="Nabin").click()
     page.wait_for_timeout(1000)  
 
     for i in range(4):
         page.get_by_role("button", name="0").click()
-    page.wait_for_timeout(1000) 
+    page.wait_for_timeout(1000)  
 
     page.get_by_role("button", name="Start Shift").click()
     page.wait_for_timeout(1000)  
-
-    page.get_by_text("START SHIFT").click()
-
-    page.wait_for_timeout(1000)
-
-    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/kitchen")
-    page.wait_for_timeout(1000)  
-
-   
-    page.get_by_text("Chinese Chop Suey (Indo-Chinese style) (Veg)").first.click()
-    page.wait_for_timeout(2000)  
-
-    page.get_by_role("button", name="Start Preparing").click()
-    page.wait_for_timeout(1000)
-    
-    page.get_by_role("button", name="All Ready").click()
-    page.wait_for_timeout(2000)
-
-
     browser.close()

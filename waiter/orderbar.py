@@ -1,4 +1,4 @@
-# this code executes the login process for the waiter and places a new order in the system.
+
 
 from playwright.sync_api import sync_playwright, expect
 
@@ -41,21 +41,6 @@ with sync_playwright() as p:
     page.get_by_role("button", name="Add to Order").click()
     page.wait_for_timeout(2000)
 
-    # page.get_by_role("button", name="Send to Kitchen").click()
-    # page.wait_for_timeout(2000)
-    # # page.get_by_role("button", name="Cancel").click()
-    # cancel_button = page.get_by_role("button", name="Cancel")
-
-    # print(cancel_button.count())
-
-    # close_icon = page.locator("svg.lucide-circle-x")
-    # print(page.locator(".lucide-circle-x").count())
-    # print("URL:", page.url)
-    # print("X count:", page.locator(".lucide-circle-x").count())
-    # print("HTML contains circle-x:",
-    #   "lucide-circle-x" in page.content())
-
-    # print(close_icon.count())
 
     page.wait_for_timeout(7000)
 

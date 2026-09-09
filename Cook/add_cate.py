@@ -29,15 +29,6 @@ with sync_playwright() as p:
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/kitchen")
     page.wait_for_timeout(1000)  # Add between critical actions
 
-    # reports_icon = page.locator(
-    # "svg.lucide-file-chart-column-increasing"
-    # )
-    # menu_icon.click()
-    # page.wait_for_timeout(7000)  # Add between critical actions
-
-    # menu_icon = page.locator("svg.lucide-menu")
-
-    # print(menu_icon.count())
 
     menu_icon = page.locator("svg.lucide-layout-grid")
     

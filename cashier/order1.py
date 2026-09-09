@@ -1,5 +1,3 @@
-# this code executes the login process for the waiter and places a new order in the system.
-
 from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as p:
@@ -32,17 +30,7 @@ with sync_playwright() as p:
     page.wait_for_timeout(2000)
 
     page.get_by_role("button", name="Open POS").click()
-    
     page.wait_for_timeout(2000)
-
-    # add_item = page.get_by_role(
-        # "button",
-        # name="Add Item",
-        # exact=False
-        # )
-    
-        # print(add_item.count())
-
     page.get_by_text("Apple Iced Tea").click()
     page.wait_for_timeout(2000)
     

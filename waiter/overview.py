@@ -1,6 +1,3 @@
-# Waiter picks up the order and serves it to the customer.
-# This script includes error handling for cases where there is no order to serve.
-
 from playwright.sync_api import sync_playwright, expect
 
 try:

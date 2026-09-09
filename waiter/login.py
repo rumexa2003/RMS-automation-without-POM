@@ -1,4 +1,4 @@
-# this code executes the login process for the waiter and places a new order in the system.
+
 
 from playwright.sync_api import sync_playwright, expect
 

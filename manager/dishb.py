@@ -12,7 +12,7 @@ with sync_playwright() as p:
     expect(table_input).to_have_value("GC-01")
 
     page.get_by_role("button", name="Activate System").click()
-    page.get_by_role("button", name="Anish").click()
+    page.get_by_role("button", name="Nabin").click()
     page.wait_for_timeout(1000)  
 
     for i in range(4):
@@ -21,37 +21,46 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="Start Shift").click()
     page.wait_for_timeout(1000)  
-
-    page.get_by_text("START SHIFT").click()
-
-    page.wait_for_timeout(2000) 
-
-    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/kitchen")
-    page.wait_for_timeout(1000) 
-
-   
-    menu_icon = page.locator("svg.lucide-layout-grid")
-
-    menu_icon.click()
-    page.wait_for_timeout(2000)
     
-    page.get_by_text("New Dish").click()
-    page.wait_for_timeout(2000)
-    
+    page.get_by_text("Menu Mgmt", exact=True).click()
+    page.wait_for_timeout(1000)  
 
-    dish_name_input = page.get_by_placeholder("e.g. Signature Burger")
-    dish_name_input.fill("Signature Burger")
+#     iced_tea = page.locator("button").filter(has_text="Iced Tea")
+
+#     print("Iced Tea buttons:", iced_tea.count())
+
+#     iced_tea.click()
+    page.locator("button").filter(has_text="Iced Tea").click()
+
+    page.wait_for_timeout(1000)
+    page.get_by_text("Add Dish").click()
     page.wait_for_timeout(2000)
-    
+            
+            # Locate and fill the drink name input
+    drink_name_input = page.get_by_placeholder("Item Name")
+    drink_name_input.fill("test drink")
+    page.wait_for_timeout(2000)
+            
+            # Locate and fill the price input
     price_input = page.locator("input[type='number'][placeholder='0']")
     price_input.fill("350")
     page.wait_for_timeout(2000)
-    
-    page.evaluate("window.scrollBy(0, 500)")  
+            
+            # Scroll down to see the "Save Drink" button
+    page.evaluate("window.scrollBy(0, 500)")  # Scroll down 500px
     page.wait_for_timeout(2000)
-    
+            
+            # Click on "Save Drink" button
     page.get_by_role("button", name="Save Dish").click()
     page.wait_for_timeout(3000)
-    
+    page.wait_for_timeout(7000)
 
     browser.close()
+
+
+
+
+
+
+
+
