@@ -43,16 +43,11 @@ with sync_playwright() as p:
     page.get_by_role("button", name="Edit").click()
 
     page.wait_for_timeout(5000)
-    # page.get_by_placeholder("Phone").fill("9876543210")
     page.get_by_placeholder("Phone", exact=True).fill("9876543210")
-
-
     
     button = page.get_by_role("button", name="Update", exact=True)
     button.scroll_into_view_if_needed()
     button.click()
-    page.get_by_text("Staff Hub", exact=True).click()
-
-
+    
     page.wait_for_timeout(7000)
     browser.close()
