@@ -20,7 +20,6 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="Start Shift").click()
 
-    # Click Sign Out button
     page.wait_for_timeout(2000)
 
     page.get_by_role("button", name="Sign Out").click()
@@ -29,7 +28,6 @@ with sync_playwright() as p:
     page.get_by_role("button").filter(has_text="Yes").click()
     page.wait_for_timeout(2000)
 
-    # Assert that staff has landed on the login URL
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/login")
 
     page.wait_for_timeout(2000)

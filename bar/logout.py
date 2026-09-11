@@ -13,18 +13,18 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="Activate System").click()
     page.get_by_role("button", name="Bar").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     for i in range(4):
         page.get_by_role("button", name="0").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000) 
 
     page.get_by_role("button", name="Start Shift").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     page.get_by_text("START SHIFT").click()
 
-    page.wait_for_timeout(7000)  # Add between critical actions
+    page.wait_for_timeout(7000) 
 
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
     page.wait_for_timeout(2000)
@@ -35,7 +35,6 @@ with sync_playwright() as p:
     page.get_by_role("button").filter(has_text="Yes").click()
     page.wait_for_timeout(2000)
         
-            # Assert that staff has landed on the login URL
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/login")
     page.wait_for_timeout(2000)
 

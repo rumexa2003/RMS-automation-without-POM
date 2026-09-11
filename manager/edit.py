@@ -26,14 +26,6 @@ with sync_playwright() as p:
     page.wait_for_timeout(1000)
 
 
-    # staff_card = page.locator("div").filter(
-    # has=page.get_by_role("heading", name="Staff 1", exact=True)
-    # )
-
-    # print("Staff cards found:", staff_card.count())
-
-    # staff_card.click()
-
     staff_card = page.locator("div").filter(
         has=page.get_by_role("heading", name="Staff 1")
     ).last

@@ -1,4 +1,4 @@
-# This block of code approaches the active order checks the status of cooking and waste.
+
 from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as p:

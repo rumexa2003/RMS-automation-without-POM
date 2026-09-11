@@ -21,8 +21,6 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="Start Shift").click()
     page.wait_for_timeout(1000)  
-
-
     page.wait_for_timeout(7000) 
 
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/manager")
@@ -31,8 +29,5 @@ with sync_playwright() as p:
     page.wait_for_timeout(2000)
     page.get_by_role("button").filter(has_text="Yes").click()
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/login")
-
-
-    
 
     browser.close()

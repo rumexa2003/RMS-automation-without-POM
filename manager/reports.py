@@ -24,9 +24,7 @@ with sync_playwright() as p:
 
     reports_link = page.get_by_role("link", name="Reports", exact=True)
 
-    # print(reports_link.count())
     reports_link.click()
-    
  
     page.get_by_role("button", name="Credit Ledger").click()
     page.wait_for_timeout(5000)  
@@ -34,7 +32,6 @@ with sync_playwright() as p:
     close_button = page.get_by_role("button").filter(
     has=page.locator("svg.lucide-x")
     )
-    # print("Close buttons:", close_button.count())
     close_button.click()
     page.wait_for_timeout(10000)  
 
@@ -42,7 +39,6 @@ with sync_playwright() as p:
     has=page.locator("svg.lucide-calendar")
     )
 
-    # print("Date dropdown:", date_dropdown.count())
     date_dropdown.click()
     page.wait_for_timeout(5000) 
     page.wait_for_timeout(1000)

@@ -13,21 +13,21 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="Activate System").click()
     page.get_by_role("button", name="Bar").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     for i in range(4):
         page.get_by_role("button", name="0").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000) 
 
     page.get_by_role("button", name="Start Shift").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000) 
 
     page.get_by_text("START SHIFT").click()
 
-    page.wait_for_timeout(7000)  # Add between critical actions
+    page.wait_for_timeout(7000)  
 
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000) 
     
     reports_icon = page.locator("svg.lucide-file-chart-column-increasing")
 

@@ -40,13 +40,6 @@ with sync_playwright() as p:
 
     confirm_payment.click()
     
-
-
-    # page.get_by_role("button", name="Kitchen Status").click()
-    
-    # page.get_by_role("button", name="Serve Ready Items").click()
     page.wait_for_timeout(1000)  
-
-    
 
     browser.close()

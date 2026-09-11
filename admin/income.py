@@ -23,8 +23,36 @@ with sync_playwright() as p:
 
         
     authenticate = page.get_by_text("AUTHENTICATE", exact=True)
-
     authenticate.click()
+
+    inventory=page.get_by_text("Inventory",exact=True)
+    inventory.click()
+    page.wait_for_timeout(2000)
+
+    add=page.get_by_role("button",name="Log Cashflow")
+    add.click()
+    page.wait_for_timeout(2000)
+
+    page.get_by_role("button",name=" Income", exact=True).click()
+
+    t=page.get_by_placeholder("e.g. Wedding Party Catering")
+    t.fill("Event Booking")
+     
+    page.locator("svg.lucide-chevron-down").click()
+   
+    page.wait_for_timeout(5000)
+
+    amount = page.locator('input[name="amount"]')
+    amount.fill("5000")
+    page.wait_for_timeout(5000)
+
+    date_input = page.locator('input[name="date"]')
+
+    page.wait_for_timeout(5000)
+
+    date_input.fill("2026-09-09") 
+    page.get_by_role("button", name="Save Income",exact=True).click()
+    page.wait_for_timeout(5000)
 
     page.wait_for_timeout(7000)  
     browser.close()

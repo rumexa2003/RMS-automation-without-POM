@@ -36,9 +36,6 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="payroll").click()
 
-  
-
-
     page.wait_for_timeout(2000)  
 
 

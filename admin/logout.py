@@ -24,11 +24,9 @@ with sync_playwright() as p:
         
     authenticate = page.get_by_text("AUTHENTICATE", exact=True)
 
-    # print("Authenticate count:", authenticate.count())
 
     authenticate.click()
 
-    # page.get_by_role("button", name="Start Shift").click()
     page.wait_for_timeout(7000) 
     
     page.get_by_role("button", name="Sign Out").click()

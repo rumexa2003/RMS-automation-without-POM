@@ -13,29 +13,27 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="Activate System").click()
     page.get_by_role("button", name="Bar").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000) 
 
     for i in range(4):
         page.get_by_role("button", name="0").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     page.get_by_role("button", name="Start Shift").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     page.get_by_text("START SHIFT").click()
 
-    page.wait_for_timeout(7000)  # Add between critical actions
+    page.wait_for_timeout(7000) 
 
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)
     
     reports_icon = page.locator("svg.lucide-file-chart-column-increasing")
 
-    # print(reports_icon.count())
-
     reports_icon.click()
     page.get_by_role("button", name="Leave Status").click()
-    # expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender/reports")
+
     page.get_by_role("button", name="Apply Now", exact=True).click()
     page.get_by_role("button", name="Urgent", exact=True).click()
         
@@ -43,8 +41,8 @@ with sync_playwright() as p:
         
     date_inputs = page.locator('input[type="date"]')
         
-    date_inputs.nth(0).fill("2026-09-21")  # FROM
-    date_inputs.nth(1).fill("2026-09-29")  # TO
+    date_inputs.nth(0).fill("2026-09-21")  
+    date_inputs.nth(1).fill("2026-09-29")  
     page.wait_for_timeout(2000)
         
     page.get_by_placeholder("Why do you need leave?").fill("I need leave for personal reasons")
@@ -53,7 +51,6 @@ with sync_playwright() as p:
     page.get_by_role("button", name="Submit Request").click()
     page.wait_for_timeout(2000)
         
-        # Check if "Request sent" notification appears
     try:
         success_notification = page.get_by_text("Request sent")
         success_notification.wait_for(timeout=5000)

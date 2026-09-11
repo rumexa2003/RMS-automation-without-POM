@@ -12,7 +12,7 @@ with sync_playwright() as p:
     expect(table_input).to_have_value("GC-01")
 
     page.get_by_role("button", name="Activate System").click()
-    page.get_by_role("button", name="Bar").click()
+    page.get_by_role("button", name="Nabin").click()
     page.wait_for_timeout(1000)  
 
     for i in range(4):
@@ -20,20 +20,21 @@ with sync_playwright() as p:
     page.wait_for_timeout(1000)  
 
     page.get_by_role("button", name="Start Shift").click()
-    page.wait_for_timeout(1000)
+    link = page.get_by_role("link", name="Specials", exact=True)
+    link.click()
+    page.wait_for_timeout(1000)  
 
-    page.get_by_text("START SHIFT").click()
+    dish = page.locator("div.grid.grid-cols-12").filter(
+    has_text="American Chopsey"
+    )
+
+    print("Dish count:", dish.count())
+
+    toggle = dish.locator("button")
+
+    print("Toggle count:", toggle.count())
+
+    toggle.click()
 
     page.wait_for_timeout(7000)  
-
-    expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
-    page.get_by_text("Apple Iced Tea").first.click()
-    page.wait_for_timeout(2000)  
-    page.get_by_role("button", name="Start Preparing").click()
-    page.wait_for_timeout(1000)
-        
-    page.get_by_role("button", name="All Ready").click()
-    page.wait_for_timeout(2000)
-
-
     browser.close()

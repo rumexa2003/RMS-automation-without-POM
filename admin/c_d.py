@@ -35,11 +35,9 @@ with sync_playwright() as p:
   
     page.wait_for_timeout(2000)
 
-    # Click on "Category" button
     page.get_by_role("button", name="New Category").click()
     page.wait_for_timeout(2000)
     
-    # # Locate and fill the category name input
     category_input = page.get_by_placeholder("e.g. Starters")
     category_input.fill("Automation Category")
     page.wait_for_timeout(2000)
@@ -48,7 +46,6 @@ with sync_playwright() as p:
     page.wait_for_timeout(10000)
 
     Auto= page.get_by_text("Automation Category", exact=True)
-    # print("auto:", Auto.count())
     Auto.click()
     page.wait_for_timeout(5000)
 
@@ -56,24 +53,19 @@ with sync_playwright() as p:
     page.get_by_role("button", name=" Dish").click()
     page.wait_for_timeout(2000)
     
-    # # Locate and fill the dish name input
+    
     dish_name_input = page.get_by_placeholder("Item Name")
     dish_name_input.fill("Signature Burger")
     page.wait_for_timeout(2000)
     
-    # # Locate and fill the price input
+
     price_input = page.locator("input[type='number'][placeholder='0']")
     price_input.fill("350")
-    # page.wait_for_timeout(2000)
-    
-    page.evaluate("window.scrollBy(0, 500)")  # Scroll down 500px
-    # Scroll down to see the "Save Dish" button
 
-    # page.wait_for_timeout(2000)
     
-    # # Click on "Save Dish" button
-    page.get_by_role("button", name="Save Dish").click()
-    # page.wait_for_timeout(3000)    
+    page.evaluate("window.scrollBy(0, 500)")  
+    
+    page.get_by_role("button", name="Save Dish").click() 
 
     page.wait_for_timeout(7000)  
     browser.close()

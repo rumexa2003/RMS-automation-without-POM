@@ -35,14 +35,6 @@ with sync_playwright() as p:
     
     page.wait_for_timeout(2000)
 
-    # add_item = page.get_by_role(
-        # "button",
-        # name="Add Item",
-        # exact=False
-        # )
-    
-        # print(add_item.count())
-
     page.get_by_text("Apple Iced Tea").click()
     page.wait_for_timeout(2000)
     
@@ -50,7 +42,6 @@ with sync_playwright() as p:
     page.get_by_role("button", name="Add to Order").click()
     page.wait_for_timeout(2000)
     page.get_by_role("button", name="Send to Kitchen").click()
-    
     
     page.wait_for_timeout(7000)
 

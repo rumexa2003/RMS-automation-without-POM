@@ -35,12 +35,8 @@ with sync_playwright() as p:
     add.click()
     page.wait_for_timeout(2000)
 
-   
-    # e.g. Plumber Fixing Sink
-
     t=page.get_by_placeholder("e.g. Plumber Fixing Sink")
     t.fill("Electricity")
-     # Click chevron-down dropdown
     page.locator("svg.lucide-chevron-down").click()
     page.wait_for_timeout(1000)
     
@@ -51,7 +47,7 @@ with sync_playwright() as p:
     page.wait_for_timeout(5000)
 
     date_input = page.locator('input[name="date"]')
-    # date_input.fill()
+    
     page.wait_for_timeout(5000)
 
     date_input.fill("2026-09-09") 

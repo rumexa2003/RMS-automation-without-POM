@@ -25,32 +25,23 @@ with sync_playwright() as p:
     page.get_by_text("Menu Mgmt", exact=True).click()
     page.wait_for_timeout(1000)  
 
-#     iced_tea = page.locator("button").filter(has_text="Iced Tea")
-
-#     print("Iced Tea buttons:", iced_tea.count())
-
-#     iced_tea.click()
     page.locator("button").filter(has_text="Iced Tea").click()
 
     page.wait_for_timeout(1000)
     page.get_by_text("Add Dish").click()
     page.wait_for_timeout(2000)
             
-            # Locate and fill the drink name input
     drink_name_input = page.get_by_placeholder("Item Name")
     drink_name_input.fill("test drink")
     page.wait_for_timeout(2000)
             
-            # Locate and fill the price input
     price_input = page.locator("input[type='number'][placeholder='0']")
     price_input.fill("350")
     page.wait_for_timeout(2000)
             
-            # Scroll down to see the "Save Drink" button
-    page.evaluate("window.scrollBy(0, 500)")  # Scroll down 500px
+    page.evaluate("window.scrollBy(0, 500)")  
     page.wait_for_timeout(2000)
             
-            # Click on "Save Drink" button
     page.get_by_role("button", name="Save Dish").click()
     page.wait_for_timeout(3000)
     page.wait_for_timeout(7000)

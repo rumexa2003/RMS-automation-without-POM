@@ -13,28 +13,24 @@ with sync_playwright() as p:
 
     page.get_by_role("button", name="Activate System").click()
     page.get_by_role("button", name="Bar").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     for i in range(4):
         page.get_by_role("button", name="0").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     page.get_by_role("button", name="Start Shift").click()
-    page.wait_for_timeout(1000)  # Add between critical actions
+    page.wait_for_timeout(1000)  
 
     page.get_by_text("START SHIFT").click()
 
-    page.wait_for_timeout(7000)  # Add between critical actions
+    page.wait_for_timeout(7000)  
 
     expect(page).to_have_url("https://rms.geckoworksnepal.com.np/staff/bartender")
-    page.wait_for_timeout(1000)  # Add between critical actions
-    # inventory_icon = page.locator("svg.lucide-file-chart-column-increasing")
+    page.wait_for_timeout(1000)  
+
     inventory_icon = page.locator("svg.lucide-package")
     
-    # inventory_icon = page.locator("lucide lucide-package w-[18px] h-[18px]")
-
-    # print(inventory_icon.count())
-
     inventory_icon.click()
     page.wait_for_timeout(7000)
 

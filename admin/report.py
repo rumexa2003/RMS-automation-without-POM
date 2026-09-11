@@ -24,7 +24,40 @@ with sync_playwright() as p:
         
     authenticate = page.get_by_text("AUTHENTICATE", exact=True)
 
+    # print("Authenticate count:", authenticate.count())
+
     authenticate.click()
+    reports_link = page.get_by_role("link", name="Reports", exact=True)
+
+    # print(reports_link.count())
+    reports_link.click()
+    
+ 
+    page.get_by_role("button", name="Credit Ledger").click()
+    page.wait_for_timeout(5000)  
+
+    close_button = page.get_by_role("button").filter(
+    has=page.locator("svg.lucide-x")
+    )
+    
+    close_button.click()
+    page.wait_for_timeout(10000)  
+
+    date_dropdown = page.locator("button").filter(
+    has=page.locator("svg.lucide-calendar")
+    )
+
+    date_dropdown.click()
+    page.wait_for_timeout(5000) 
+    page.wait_for_timeout(1000)
+
+    days_30 = page.get_by_role(
+        "button",
+        name="30 Days",
+        exact=True
+    )
+    days_30.click()
+    # page.wait_for_timeout(5000)
 
     page.wait_for_timeout(7000)  
     browser.close()

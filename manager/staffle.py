@@ -46,7 +46,6 @@ with sync_playwright() as p:
     
     page.wait_for_timeout(2000)
     
-    # Check for "request sent" notification
     expect(page.get_by_text("Request sent", exact=False)).to_be_visible()
     
     page.wait_for_timeout(7000)

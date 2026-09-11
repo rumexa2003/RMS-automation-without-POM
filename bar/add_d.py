@@ -58,7 +58,6 @@ with sync_playwright() as p:
     page.evaluate("window.scrollBy(0, 500)")  
     page.wait_for_timeout(2000)
         
-        # Click on "Save Drink" button
     page.get_by_role("button", name="Save Drink").click()
     page.wait_for_timeout(3000)
     page.wait_for_timeout(7000)
